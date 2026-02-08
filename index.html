@@ -6,75 +6,351 @@
   <title>PickWho - The Free Alternative to Big Gambling</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --teal-primary: #00E6CA; --teal-dark: #00B89E; --teal-light: #33FFDD; --dark-navy: #0A1E1B; --dark-teal-gray: #132E2A; --light-teal-gray: #1B3D37; --gold: #FFD700; --text-primary: #FFFFFF; --text-secondary: #B0BEC5; --text-disabled: #607D8B; }
+
+    :root {
+      --teal-primary: #00E6CA;
+      --teal-dark: #00B89E;
+      --teal-light: #33FFDD;
+      --dark-navy: #0A1E1B;
+      --dark-teal-gray: #132E2A;
+      --light-teal-gray: #1B3D37;
+      --gold: #FFD700;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0BEC5;
+      --text-disabled: #607D8B;
+    }
+
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--dark-navy); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
-    .bg-gradient { position: fixed; inset: 0; background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-teal-gray) 50%, var(--light-teal-gray) 100%); z-index: -2; }
-    .bg-glow { position: fixed; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0, 230, 202, 0.08) 0%, transparent 70%); z-index: -1; animation: floatGlow 12s ease-in-out infinite; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark-navy);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-teal-gray) 50%, var(--light-teal-gray) 100%);
+      z-index: -2;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 230, 202, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      animation: floatGlow 12s ease-in-out infinite;
+    }
     .bg-glow.one { top: -200px; right: -200px; }
     .bg-glow.two { bottom: -200px; left: -200px; animation-delay: -6s; }
-    @keyframes floatGlow { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-30px, 30px) scale(1.1); } }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-    .hero { text-align: center; padding: 100px 0 40px; }
-    .hero-logo { font-size: clamp(72px, 10vw, 100px); font-weight: 900; letter-spacing: -2px; margin-bottom: 8px; color: #FFFFFF; }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30px, 30px) scale(1.1); }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--teal-primary); }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--teal-primary);
+      background: rgba(0, 230, 202, 0.08);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      text-align: center;
+      padding: 40px 0 16px;
+    }
+    .hero-logo {
+      font-size: clamp(48px, 12vw, 100px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 6px;
+      color: #FFFFFF;
+    }
     .hero-logo span { color: var(--teal-primary); position: relative; }
-    .hero-logo .checkmark { position: absolute; top: -0.15em; right: -0.35em; width: 0.38em; height: 0.38em; }
-    .hero h1 { font-size: clamp(22px, 3vw, 30px); font-weight: 600; line-height: 1.3; margin-bottom: 24px; color: #FFFFFF; }
+    .hero-logo .checkmark {
+      position: absolute;
+      top: -0.15em;
+      right: -0.35em;
+      width: 0.38em;
+      height: 0.38em;
+    }
+    .hero h1 {
+      font-size: clamp(20px, 3vw, 30px);
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: 0;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
     .hero h1 .accent { color: var(--teal-primary); font-weight: 700; }
-    .hero p { font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; line-height: 1.7; }
-    .store-buttons { display: flex; justify-content: center; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
-    .store-btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 15px; transition: transform 0.2s, box-shadow 0.2s; }
-    .store-btn.apple { background: #FFFFFF; color: #000000; }
-    .store-btn.google { background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark)); color: var(--dark-navy); }
-    .store-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 24px;
+      line-height: 1.5;
+    }
+
+    /* ========== STORE BUTTONS ========== */
+    .store-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .store-btn.apple {
+      background: #FFFFFF;
+      color: #000000;
+    }
+    .store-btn.google {
+      background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark));
+      color: var(--dark-navy);
+    }
+    .store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
     .store-btn svg { width: 22px; height: 22px; }
-    .mission { padding: 60px 0; text-align: center; }
-    .mission h2 { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 20px; }
-    .mission p { font-size: 17px; color: var(--text-secondary); max-width: 650px; margin: 0 auto 16px; line-height: 1.8; }
-    .how-it-works { padding: 40px 0 60px; }
-    .how-it-works h2 { text-align: center; font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; margin-bottom: 40px; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
-    .step { text-align: center; padding: 32px 24px; border-radius: 20px; background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%); border: 1px solid rgba(255,255,255,0.08); }
-    .step-number { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(0,230,202,0.15); color: var(--teal-primary); font-size: 18px; font-weight: 900; margin-bottom: 16px; }
-    .step h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-    .sponsor-cta { padding: 40px 0 60px; text-align: center; }
-    .sponsor-box { max-width: 580px; margin: 0 auto; padding: 48px 40px; border-radius: 24px; background: linear-gradient(135deg, rgba(0,230,202,0.08) 0%, rgba(255,255,255,0.04) 100%); border: 1px solid rgba(0,230,202,0.2); }
-    .sponsor-box h2 { font-size: 26px; font-weight: 800; margin-bottom: 12px; }
-    .sponsor-box p { color: var(--text-secondary); font-size: 16px; margin-bottom: 28px; line-height: 1.7; }
-    .sponsor-link { display: inline-block; padding: 14px 36px; border-radius: 12px; background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark)); color: var(--dark-navy); font-weight: 700; font-size: 16px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(0,230,202,0.2); }
-    .sponsor-link:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,230,202,0.35); }
-    footer { padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
-    footer p { color: var(--text-disabled); font-size: 13px; }
-    @media (max-width: 768px) { .hero { padding: 60px 0 30px; } .steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } .sponsor-box { padding: 36px 24px; } }
+
+    /* ========== MISSION ========== */
+    .mission {
+      padding: 32px 0 24px;
+      text-align: center;
+    }
+    .mission h2 {
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .mission p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 10px;
+      line-height: 1.55;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .how-it-works {
+      padding: 24px 0 32px;
+    }
+    .how-it-works h2 {
+      text-align: center;
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 800;
+      margin-bottom: 24px;
+      letter-spacing: -0.5px;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .step {
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(0, 230, 202, 0.15);
+      color: var(--teal-primary);
+      font-size: 17px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .step h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .step p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ========== SPONSOR CTA ========== */
+    .sponsor-cta {
+      padding: 24px 0 40px;
+      text-align: center;
+    }
+    .sponsor-box {
+      max-width: 540px;
+      margin: 0 auto;
+      padding: 36px 32px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(0, 230, 202, 0.08) 0%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0, 230, 202, 0.2);
+    }
+    .sponsor-box h2 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .sponsor-box p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .sponsor-link {
+      display: inline-block;
+      padding: 12px 32px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark));
+      color: var(--dark-navy);
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(0, 230, 202, 0.2);
+    }
+    .sponsor-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 230, 202, 0.35);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    footer p {
+      color: var(--text-disabled);
+      font-size: 13px;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero { padding: 24px 0 12px; }
+      .hero-logo { letter-spacing: -1px; }
+      .steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .sponsor-box { padding: 28px 20px; }
+    }
   </style>
 </head>
 <body>
-  <div class="bg-gradient"></div><div class="bg-glow one"></div><div class="bg-glow two"></div>
+  <div class="bg-gradient"></div>
+  <div class="bg-glow one"></div>
+  <div class="bg-glow two"></div>
+
   <div class="container">
+
+    <!-- NAV -->
+    <nav>
+      <a href="/" class="nav-logo">PICK<span>WHO</span></a>
+      <div class="nav-links">
+        <a href="/sponsors">Sponsors</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-logo">PICK<span>WHO<svg class="checkmark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="60" fill="#00E6CA"/><path d="M30 60 L50 80 L90 40" stroke="#0F2A2A" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
       <h1>The Free Alternative to <span class="accent">Big Gambling</span></h1>
       <p>Pick winners across sports every week. No deposits, no losses, no predatory bs. Just fans competing for fun and prizes.</p>
+
       <div class="store-buttons">
-        <a href="https://apps.apple.com/app/id6755406814" class="store-btn apple" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> App Store</a>
-        <a href="https://play.google.com/store/apps/details?id=com.startwho.pickwho" class="store-btn google" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm.91-.91L19.59 12 17.72 9.79l-2.27 2.27 2.27 2.15zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z"/></svg> Google Play</a>
+        <a href="https://apps.apple.com/app/id6755406814" class="store-btn apple" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.startwho.pickwho" class="store-btn google" target="_blank">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.24-.84-.76-.84-1.35zm13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27zm.91-.91L19.59 12 17.72 9.79l-2.27 2.27 2.27 2.15zM6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z"/></svg>
+          Google Play
+        </a>
       </div>
     </section>
+
+    <!-- MISSION -->
     <section class="mission">
       <h2>Sports Should Be <span style="color: var(--teal-primary)">Fun</span>, Not Predatory</h2>
       <p>Big gambling apps are designed to take your money. They target young fans with flashy ads and make it easy to lose hundreds in minutes. PickWho is built on the belief that sports fans deserve better.</p>
       <p>We're <strong>100% free to play</strong>. Always. No deposits, no hidden fees, no "just one more bet" traps. Just make your picks, compete on the leaderboard, and win real prizes every week.</p>
     </section>
+
+    <!-- HOW IT WORKS -->
     <section class="how-it-works">
       <h2>How It Works</h2>
       <div class="steps">
-        <div class="step"><div class="step-number">1</div><h3>Make Your Picks</h3><p>Choose the winners of each week's games across multiple sports</p></div>
-        <div class="step"><div class="step-number">2</div><h3>Compete</h3><p>See how your picks stack up against other fans on the leaderboard</p></div>
-        <div class="step"><div class="step-number">3</div><h3>Win Prizes</h3><p>Top the leaderboard and win real prizes every week, completely free</p></div>
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Make Your Picks</h3>
+          <p>Choose the winners of each week's games across multiple sports</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Compete</h3>
+          <p>See how your picks stack up against other fans on the leaderboard</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Win Prizes</h3>
+          <p>Top the leaderboard and win real prizes every week, completely free</p>
+        </div>
       </div>
     </section>
+
+    <!-- SPONSOR CTA -->
     <section class="sponsor-cta">
       <div class="sponsor-box">
         <h2>Support the Mission</h2>
@@ -82,7 +358,12 @@
         <a href="/sponsors" class="sponsor-link">View Sponsorships</a>
       </div>
     </section>
-    <footer><p>&copy; 2026 PickWho &middot; Soni Digital LLC</p></footer>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 PickWho &middot; Soni Digital LLC</p>
+    </footer>
+
   </div>
 </body>
 </html>
