@@ -6,86 +6,706 @@
   <title>Sponsor PickWho</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root { --teal-primary: #00E6CA; --teal-dark: #00B89E; --teal-light: #33FFDD; --dark-navy: #0A1E1B; --dark-teal-gray: #132E2A; --light-teal-gray: #1B3D37; --gold: #FFD700; --text-primary: #FFFFFF; --text-secondary: #B0BEC5; --text-disabled: #607D8B; }
+
+    :root {
+      --teal-primary: #00E6CA;
+      --teal-dark: #00B89E;
+      --teal-light: #33FFDD;
+      --dark-navy: #0A1E1B;
+      --dark-teal-gray: #132E2A;
+      --light-teal-gray: #1B3D37;
+      --gold: #FFD700;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0BEC5;
+      --text-disabled: #607D8B;
+    }
+
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--dark-navy); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
-    .bg-gradient { position: fixed; inset: 0; background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-teal-gray) 50%, var(--light-teal-gray) 100%); z-index: -2; }
-    .bg-glow { position: fixed; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,230,202,0.08) 0%, transparent 70%); z-index: -1; animation: floatGlow 12s ease-in-out infinite; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark-navy);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background gradient matching the app */
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-teal-gray) 50%, var(--light-teal-gray) 100%);
+      z-index: -2;
+    }
+
+    /* Subtle animated glow */
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 230, 202, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      animation: floatGlow 12s ease-in-out infinite;
+    }
     .bg-glow.one { top: -200px; right: -200px; }
     .bg-glow.two { bottom: -200px; left: -200px; animation-delay: -6s; }
-    @keyframes floatGlow { 0%, 100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,30px) scale(1.1); } }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    .hero { text-align: center; padding: 80px 0 20px; }
-    .hero h1 { font-size: clamp(22px, 3vw, 28px); font-weight: 600; line-height: 1.2; margin-bottom: 20px; color: #FFFFFF; }
-    .hero-logo { font-size: clamp(72px, 10vw, 100px); font-weight: 900; letter-spacing: -2px; margin-bottom: 8px; color: #FFFFFF; }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30px, 30px) scale(1.1); }
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ========== NAV ========== */
+    nav {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+    .logo svg { width: 48px; height: 48px; }
+    .logo-text {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #FFFFFF;
+    }
+    .logo-text span { color: var(--teal-primary); }
+    nav a.cta-link {
+      color: var(--teal-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+    nav a.cta-link:hover { opacity: 0.8; }
+
+    /* ========== NAV ========== */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--teal-primary); }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--teal-primary);
+      background: rgba(0, 230, 202, 0.08);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      text-align: center;
+      padding: 32px 0 16px;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 100px;
+      background: rgba(0, 230, 202, 0.12);
+      border: 1px solid rgba(0, 230, 202, 0.25);
+      color: var(--teal-primary);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: 0;
+      margin-bottom: 12px;
+      color: #FFFFFF;
+    }
+    .hero-logo {
+      font-size: clamp(48px, 12vw, 100px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 6px;
+      color: #FFFFFF;
+    }
     .hero-logo span { color: var(--teal-primary); position: relative; }
-    .hero-logo .checkmark { position: absolute; top: -0.15em; right: -0.35em; width: 0.38em; height: 0.38em; }
+    .hero-logo .checkmark {
+      position: absolute;
+      top: -0.15em;
+      right: -0.35em;
+      width: 0.38em;
+      height: 0.38em;
+    }
     .hero h1 .accent { color: var(--teal-primary); font-weight: 700; }
-    .hero p { font-size: 18px; color: #FFFFFF; max-width: 560px; margin: 0 auto 16px; line-height: 1.7; }
+    .hero p {
+      font-size: 16px;
+      color: #FFFFFF;
+      max-width: 520px;
+      margin: 0 auto 12px;
+      line-height: 1.5;
+    }
+    .hero-cta {
+      display: inline-block;
+      padding: 16px 40px;
+      background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark));
+      color: var(--dark-navy);
+      font-weight: 700;
+      font-size: 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(0, 230, 202, 0.25);
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 230, 202, 0.4);
+    }
+
+    /* ========== STATS BAR ========== */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 40px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--teal-primary);
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 500;
+    }
+
+    /* ========== SECTION HEADERS ========== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-header h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+    }
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ========== TIER CARDS ========== */
     .tiers-section { padding: 20px 0 30px; }
-    .tiers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; align-items: start; }
-    .tier-card { position: relative; border-radius: 20px; padding: 36px 28px; background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%); border: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(12px); transition: transform 0.25s, box-shadow 0.25s; }
-    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+
+    .tier-card {
+      position: relative;
+      border-radius: 20px;
+      padding: 36px 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .tier-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Featured card (MVP) */
+    .tier-card.featured {
+      border-color: rgba(0, 230, 202, 0.35);
+      background: linear-gradient(135deg, rgba(0, 230, 202, 0.1) 0%, rgba(255,255,255,0.04) 100%);
+      box-shadow: 0 0 50px rgba(0, 230, 202, 0.08);
+    }
+    .tier-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark));
+      color: var(--dark-navy);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 5px 18px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tier-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .tier-icon.fan { background: rgba(0, 230, 202, 0.12); }
+    .tier-icon.mvp { background: rgba(0, 230, 202, 0.2); }
+    .tier-icon.champ { background: rgba(255, 215, 0, 0.15); }
+
+    .tier-name {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--teal-primary);
+      margin-bottom: 6px;
+    }
     .tier-card.champion .tier-name { color: var(--gold); }
-    .tier-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal-primary); margin-bottom: 6px; }
-    .tier-price { font-size: 40px; font-weight: 900; letter-spacing: -1px; margin-bottom: 4px; }
-    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
-    .tier-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #FFFFFF; line-height: 1.5; }
-    .tier-features li .check { flex-shrink: 0; width: 20px; height: 20px; border-radius: 6px; background: rgba(0,230,202,0.15); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .tier-card.champion .tier-features li .check { background: rgba(255,215,0,0.15); }
+
+    .tier-price {
+      font-size: 40px;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 4px;
+    }
+    .tier-price span {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0;
+    }
+    .tier-desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .tier-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .tier-features li .check {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: rgba(0, 230, 202, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .tier-card.champion .tier-features li .check {
+      background: rgba(255, 215, 0, 0.15);
+    }
+    /* All cards: feature text white */
+    .tier-features li { color: #FFFFFF; }
     .check svg { width: 12px; height: 12px; }
-    .contact-section { padding: 20px 0 40px; text-align: center; }
-    .contact-box { max-width: 580px; margin: 0 auto; padding: 48px 40px; border-radius: 24px; background: linear-gradient(135deg, rgba(0,230,202,0.08) 0%, rgba(255,255,255,0.04) 100%); border: 1px solid rgba(0,230,202,0.2); }
-    .contact-box h2 { font-size: 28px; font-weight: 800; margin-bottom: 12px; }
-    .contact-email { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 12px; background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark)); color: var(--dark-navy); font-weight: 700; font-size: 16px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 30px rgba(0,230,202,0.2); }
-    .contact-email:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,230,202,0.35); }
-    .contact-email svg { width: 20px; height: 20px; }
-    footer { padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
-    footer p { color: var(--text-disabled); font-size: 13px; }
-    @media (max-width: 768px) { .hero { padding: 50px 0 40px; } .tiers-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } .contact-box { padding: 36px 24px; } }
+
+    .tier-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .tier-btn.outline {
+      border: 1.5px solid rgba(0, 230, 202, 0.4);
+      color: var(--teal-primary);
+      background: transparent;
+    }
+    .tier-btn.outline:hover {
+      background: rgba(0, 230, 202, 0.08);
+      transform: translateY(-1px);
+    }
+    .tier-btn.filled {
+      background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark));
+      color: var(--dark-navy);
+      border: none;
+      box-shadow: 0 0 24px rgba(0, 230, 202, 0.2);
+    }
+    .tier-btn.filled:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 32px rgba(0, 230, 202, 0.35);
+    }
+    .tier-btn.gold {
+      background: linear-gradient(90deg, var(--gold), #FFC200);
+      color: var(--dark-navy);
+      border: none;
+      box-shadow: 0 0 24px rgba(255, 215, 0, 0.15);
+    }
+    .tier-btn.gold:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 32px rgba(255, 215, 0, 0.3);
+    }
+
+    /* ========== WHY SECTION ========== */
+    .why-section { padding: 60px 0 80px; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .why-card {
+      padding: 28px 24px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .why-card .icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .why-card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .why-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========== CONTACT / CTA ========== */
+    .contact-section {
+      padding: 20px 0 40px;
+      text-align: center;
+    }
+    .contact-box {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(0, 230, 202, 0.08) 0%, rgba(255,255,255,0.04) 100%);
+      border: 1px solid rgba(0, 230, 202, 0.2);
+    }
+    .contact-box h2 {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .contact-box p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 12px;
+      background: linear-gradient(90deg, var(--teal-primary), var(--teal-dark));
+      color: var(--dark-navy);
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 30px rgba(0, 230, 202, 0.2);
+    }
+    .contact-email:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 230, 202, 0.35);
+    }
+    .contact-email svg {
+      width: 20px;
+      height: 20px;
+    }
+    .contact-or {
+      display: block;
+      margin: 20px 0;
+      color: var(--text-disabled);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+    .contact-alt {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    .contact-alt a {
+      color: var(--teal-primary);
+      text-decoration: none;
+    }
+    .contact-alt a:hover { text-decoration: underline; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    .footer-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      text-decoration: none;
+    }
+    .footer-logo svg { width: 32px; height: 32px; }
+    .footer-logo span {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+    .footer-logo span em {
+      font-style: normal;
+      color: var(--teal-primary);
+    }
+    footer p {
+      color: var(--text-disabled);
+      font-size: 13px;
+    }
+    footer .links {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+    }
+    footer .links a {
+      color: var(--text-secondary);
+      font-size: 13px;
+      text-decoration: none;
+    }
+    footer .links a:hover { color: var(--teal-primary); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      .hero { padding: 20px 0 12px; }
+      .hero-logo { letter-spacing: -1px; }
+      .stats-bar { gap: 28px; }
+      .tiers-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .contact-box { padding: 28px 20px; }
+    }
+
+    /* ========== PRINT / PDF ========== */
+    @page {
+      size: letter;
+      margin: 0;
+    }
+    @media print {
+      html, body {
+        width: 8.5in;
+        height: 11in;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .bg-glow { display: none; }
+      .container { padding: 0 20px; }
+      nav { padding: 14px 0; }
+      .logo svg { width: 32px; height: 32px; }
+      .logo-text { font-size: 16px; }
+      nav a.cta-link { font-size: 12px; }
+      .hero { padding: 14px 0 8px; }
+      .hero-badge { padding: 3px 10px; font-size: 8px; margin-bottom: 8px; }
+      .hero-logo { font-size: 48px !important; letter-spacing: -1px; margin-bottom: 4px; }
+      .hero h1 { font-size: 14px !important; margin-bottom: 4px; font-weight: 600; color: #FFFFFF; }
+      .hero p { font-size: 10px; margin-bottom: 8px; line-height: 1.4; max-width: 420px; color: #FFFFFF; }
+      .hero-cta { padding: 8px 22px; font-size: 10px; border-radius: 6px; box-shadow: none; }
+      .stats-bar { padding: 8px 0; gap: 20px; }
+      .stat-value { font-size: 16px; }
+      .stat-label { font-size: 7px; }
+      .section-header { margin-bottom: 10px; }
+      .section-header h2 { font-size: 16px; margin-bottom: 4px; }
+      .section-header p { font-size: 9px; }
+      .tiers-section { padding: 8px 0 10px; }
+      .tiers-grid {
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 12px;
+        max-width: none !important;
+        margin: 0 !important;
+      }
+      .tier-card { padding: 12px 10px; border-radius: 10px; }
+      .tier-card.featured::before { font-size: 7px; padding: 2px 10px; top: -7px; }
+      .tier-icon { width: 22px; height: 22px; font-size: 11px; border-radius: 6px; margin-bottom: 4px; }
+      .tier-name { font-size: 8px; margin-bottom: 1px; }
+      .tier-price { font-size: 22px; margin-bottom: 1px; }
+      .tier-price span { font-size: 9px; }
+      .tier-desc { font-size: 8px; margin-bottom: 8px; line-height: 1.3; }
+      .tier-features { gap: 4px; margin-bottom: 8px; }
+      .tier-features li { font-size: 8px; gap: 5px; line-height: 1.3; }
+      .tier-features li .check { width: 12px; height: 12px; border-radius: 3px; }
+      .check svg { width: 8px; height: 8px; }
+      .tier-btn { padding: 6px; font-size: 9px; border-radius: 6px; }
+      .why-section { padding: 10px 0 10px; }
+      .why-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
+        gap: 8px;
+      }
+      .why-card { padding: 10px 10px; border-radius: 8px; }
+      .why-card .icon { font-size: 14px; margin-bottom: 4px; }
+      .why-card h3 { font-size: 10px; margin-bottom: 3px; }
+      .why-card p { font-size: 8px; line-height: 1.3; }
+      .contact-section { padding: 10px 0 10px; }
+      .contact-box { padding: 16px 20px; border-radius: 12px; }
+      .contact-box h2 { font-size: 15px; margin-bottom: 4px; }
+      .contact-box p { font-size: 10px; margin-bottom: 10px; line-height: 1.4; }
+      .contact-email { padding: 8px 16px; font-size: 11px; border-radius: 6px; }
+      .contact-email svg { width: 12px; height: 12px; }
+      .contact-or { margin: 6px 0; font-size: 9px; }
+      .contact-alt { font-size: 9px; }
+      footer { padding: 8px 0; }
+      .footer-logo { margin-bottom: 2px; display: none; }
+      footer p { font-size: 8px; }
+      footer .links { margin-top: 2px; gap: 12px; }
+      footer .links a { font-size: 8px; }
+    }
   </style>
 </head>
 <body>
-  <div class="bg-gradient"></div><div class="bg-glow one"></div><div class="bg-glow two"></div>
+  <div class="bg-gradient"></div>
+  <div class="bg-glow one"></div>
+  <div class="bg-glow two"></div>
+
   <div class="container">
+
+    <!-- NAV -->
+    <nav class="top-nav">
+      <a href="/" class="nav-logo">PICK<span>WHO</span></a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-logo">PICK<span>WHO<svg class="checkmark" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="60" fill="#00E6CA"/><path d="M30 60 L50 80 L90 40" stroke="#0F2A2A" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
       <h1>Support the Alternative to<br><span class="accent">Big Gambling</span></h1>
       <p>PickWho is <strong>100% free to play</strong>. No deposits, no losses, no predatory bs. Just fans competing for fun and prizes.</p>
     </section>
+
+    <!-- SPONSORSHIP OPTIONS -->
     <section class="tiers-section" id="tiers">
       <div class="tiers-grid">
+
+        <!-- SPECIAL THANKS -->
         <div class="tier-card">
           <div class="tier-name">Special Thanks</div>
           <div class="tier-price">$10</div>
           <ul class="tier-features">
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your <strong>name</strong> listed in our Special Thanks section</span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your <strong>social media</strong> handle or <strong>website</strong> displayed</span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Short description of <strong>your brand</strong></span></li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Your <strong>name</strong> listed in our Special Thanks section</span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Your <strong>social media</strong> handle or <strong>website</strong> displayed</span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Short description of <strong>your brand</strong></span>
+            </li>
           </ul>
         </div>
+
+        <!-- POWERED BY LEADERBOARD -->
         <div class="tier-card">
           <div class="tier-name">Powered By</div>
           <div class="tier-price">$25</div>
           <ul class="tier-features">
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Everything</strong> in Special Thanks</span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>"Powered by"</strong> branding on the leaderboard</span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Exclusive</strong> weekly placement</span></li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><strong>Everything</strong> in Special Thanks</span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><strong>"Powered by"</strong> branding on the leaderboard</span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#00E6CA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><strong>Exclusive</strong> weekly placement</span>
+            </li>
           </ul>
         </div>
+
+        <!-- NAMED CONTEST + AD -->
         <div class="tier-card champion">
           <div class="tier-name">Named Contest</div>
           <div class="tier-price">$50</div>
           <ul class="tier-features">
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><strong>Everything</strong> in Powered By</span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>The weekly contest is <strong>named after your brand</strong></span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your ad shown <strong>50%</strong> of the time</span></li>
-            <li><span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Your $50 directly <strong>funds that week's prize</strong></span></li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><strong>Everything</strong> in Powered By</span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>The weekly contest is <strong>named after your brand</strong></span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Your ad shown <strong>50%</strong> of the time</span>
+            </li>
+            <li>
+              <span class="check"><svg viewBox="0 0 12 12" fill="none"><path d="M2.5 6L5 8.5L9.5 3.5" stroke="#FFD700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span>Your $50 directly <strong>funds that week's prize</strong></span>
+            </li>
           </ul>
         </div>
+
       </div>
     </section>
+
+    <!-- CONTACT -->
     <section class="contact-section" id="contact">
       <div class="contact-box">
         <h2>Interested? Email us at</h2>
@@ -95,7 +715,12 @@
         </a>
       </div>
     </section>
-    <footer><p>&copy; 2026 PickWho &middot; Soni Digital LLC</p></footer>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2026 PickWho &middot; Soni Digital LLC</p>
+    </footer>
+
   </div>
 </body>
 </html>
