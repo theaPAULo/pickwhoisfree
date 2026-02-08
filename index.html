@@ -183,48 +183,25 @@
     /* ========== HOW IT WORKS ========== */
     .how-it-works {
       padding: 24px 0 32px;
+      text-align: center;
     }
     .how-it-works h2 {
-      text-align: center;
       font-size: clamp(22px, 3.5vw, 32px);
       font-weight: 800;
       margin-bottom: 24px;
       letter-spacing: -0.5px;
     }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    .demo-video-wrapper {
+      max-width: 280px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(0, 230, 202, 0.2);
+      box-shadow: 0 0 40px rgba(0, 230, 202, 0.1), 0 20px 60px rgba(0, 0, 0, 0.3);
     }
-    .step {
-      text-align: center;
-      padding: 28px 20px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, rgba(255,255,255,0.03) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(0, 230, 202, 0.15);
-      color: var(--teal-primary);
-      font-size: 17px;
-      font-weight: 900;
-      margin-bottom: 12px;
-    }
-    .step h3 {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    .step p {
-      font-size: 14px;
-      color: var(--text-secondary);
-      line-height: 1.5;
+    .demo-video-wrapper video {
+      width: 100%;
+      display: block;
     }
 
     /* ========== SPONSOR CTA ========== */
@@ -283,7 +260,7 @@
     @media (max-width: 768px) {
       .hero { padding: 24px 0 12px; }
       .hero-logo { letter-spacing: -1px; }
-      .steps { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .demo-video-wrapper { max-width: 240px; }
       .sponsor-box { padding: 28px 20px; }
     }
   </style>
@@ -330,23 +307,11 @@
 
     <!-- HOW IT WORKS -->
     <section class="how-it-works">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Make Your Picks</h3>
-          <p>Choose the winners of each week's games across multiple sports</p>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Compete</h3>
-          <p>See how your picks stack up against other fans on the leaderboard</p>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Win Prizes</h3>
-          <p>Top the leaderboard and win real prizes every week, completely free</p>
-        </div>
+      <h2>See It In Action</h2>
+      <div class="demo-video-wrapper">
+        <video autoplay muted loop playsinline>
+          <source src="demo.mp4" type="video/mp4">
+        </video>
       </div>
     </section>
 
