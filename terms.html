@@ -1,441 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PickWho - Terms of Service</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --teal-primary: #00C9A7;
-            --teal-dark: #00A88A;
-            --dark-navy: #0D1B2A;
-            --darker-navy: #060F18;
-            --gold: #FFD700;
-            --text-primary: #FFFFFF;
-            --text-secondary: #A0AEC0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: linear-gradient(180deg, var(--darker-navy) 0%, var(--dark-navy) 100%);
-            min-height: 100vh;
-        }
-        header {
-            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--darker-navy) 100%);
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(0, 201, 167, 0.2);
-        }
-        .logo-section h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--teal-primary) 0%, var(--teal-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .logo-section a { text-decoration: none; }
-        .company-name {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-top: 5px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .page-title { text-align: center; margin-bottom: 10px; }
-        .page-title h2 { font-size: 1.8rem; color: var(--text-primary); }
-        .last-updated {
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-        }
-        .content-box {
-            background: rgba(13, 27, 42, 0.6);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        h3 {
-            color: var(--teal-primary);
-            margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        h3:first-child { margin-top: 0; }
-        h4 {
-            color: var(--text-primary);
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 1.05rem;
-        }
-        p { color: var(--text-secondary); margin-bottom: 15px; }
-        ul, ol { color: var(--text-secondary); margin-bottom: 15px; padding-left: 25px; }
-        li { margin-bottom: 8px; }
-        a { color: var(--teal-primary); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .caps-text {
-            text-transform: uppercase;
-            font-size: 0.95rem;
-        }
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .footer-links { margin-bottom: 15px; }
-        .footer-links a { color: var(--text-secondary); margin: 0 12px; font-size: 0.85rem; }
-        .footer-links a:hover { color: var(--teal-primary); }
-        .back-link { margin-top: 30px; text-align: center; }
-        @media (max-width: 600px) {
-            .logo-section h1 { font-size: 1.6rem; }
-            .page-title h2 { font-size: 1.4rem; }
-            .content-box { padding: 20px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PickWho - Terms of Service</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --teal-primary: #00E6CA;
+      --teal-dark: #00B89E;
+      --teal-light: #33FFDD;
+      --dark-navy: #0A1E1B;
+      --dark-teal-gray: #132E2A;
+      --light-teal-gray: #1B3D37;
+      --gold: #FFD700;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0BEC5;
+      --text-disabled: #607D8B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark-navy);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-teal-gray) 50%, var(--light-teal-gray) 100%);
+      z-index: -2;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 230, 202, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      animation: floatGlow 12s ease-in-out infinite;
+    }
+    .bg-glow.one { top: -200px; right: -200px; }
+    .bg-glow.two { bottom: -200px; left: -200px; animation-delay: -6s; }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30px, 30px) scale(1.1); }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--teal-primary); }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 32px 0 8px;
+    }
+    .page-header h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .page-header .effective-date {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    /* CONTENT */
+    .content-box {
+      margin: 32px 0 40px;
+      padding: 36px 32px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(0, 230, 202, 0.04) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(0, 230, 202, 0.12);
+    }
+
+    h3 {
+      color: var(--teal-primary);
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    h3:first-child { margin-top: 0; }
+
+    h4 {
+      color: var(--text-primary);
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    ul, ol {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      padding-left: 24px;
+      font-size: 15px;
+    }
+    li { margin-bottom: 6px; }
+
+    a { color: var(--teal-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .caps-text { text-transform: uppercase; font-size: 14px; }
+
+    /* FOOTER */
+    footer {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    footer p { color: var(--text-disabled); font-size: 13px; }
+    .footer-links { margin-bottom: 8px; }
+    .footer-links a {
+      color: var(--text-disabled);
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 13px;
+    }
+    .footer-links a:hover { color: var(--teal-primary); }
+
+    @media (max-width: 600px) {
+      .content-box { padding: 24px 18px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="logo-section">
-            <a href="/"><h1>PickWho</h1></a>
-            <p class="company-name">by Soni Digital LLC</p>
-        </div>
-    </header>
+  <div class="bg-gradient"></div>
+  <div class="bg-glow one"></div>
+  <div class="bg-glow two"></div>
 
-    <div class="container">
-        <div class="page-title">
-            <h2>Terms of Service</h2>
-        </div>
-        <p class="last-updated">Effective Date: February 5, 2026</p>
+  <div class="container">
 
-        <div class="content-box">
+    <nav>
+      <a href="/" class="nav-logo">PICK<span>WHO</span></a>
+    </nav>
 
-            <h3>1. Welcome to PickWho</h3>
-            <p>
-                These Terms apply to your use of the PickWho mobile application and all related services (the "Service"), and we encourage you to read them carefully. Please also refer to the definitions set out in Section 20 of these Terms.
-            </p>
-            <p>
-                These Terms, together with our <a href="/acceptable-use.html">Acceptable Use Policy</a>, <a href="/privacy.html">Privacy Policy</a>, and any applicable contest rules, form a legal agreement (the "Agreement") between you and Soni Digital LLC, a Texas limited liability company ("Company," "we," "us," or "our"), for your use of the Service.
-            </p>
-            <p>
-                These Terms define the terms and conditions under which you are allowed to use the Service and its Resources. If you do not agree to these Terms, you must immediately discontinue your use of the Service.
-            </p>
-            <p>
-                By creating an account, clicking "I Agree," or otherwise accessing or using the Service, you acknowledge that you have read, understood, and agree to be bound by this Agreement.
-            </p>
+    <div class="page-header">
+      <h1>Terms of Service</h1>
+      <p class="effective-date">Effective Date: February 5, 2026</p>
+    </div>
 
-            <h3>2. Eligibility</h3>
+    <div class="content-box">
 
-            <h4>2.1 General Requirements</h4>
-            <p>To use the Service, you must:</p>
-            <ul>
-                <li>be at least eighteen (18) years of age;</li>
-                <li>be a resident of the United States;</li>
-                <li>not be located in a Restricted Jurisdiction (see Section 2.2); and</li>
-                <li>have the legal capacity to enter into this Agreement.</li>
-            </ul>
-            <p>
-                You represent and warrant that you meet all eligibility requirements stated above. We reserve the right to request proof of eligibility at any time and to suspend or terminate accounts that do not meet these requirements.
-            </p>
+      <h3>1. Welcome to PickWho</h3>
+      <p>These Terms apply to your use of the PickWho mobile application and all related services (the "Service"), and we encourage you to read them carefully. Please also refer to the definitions set out in Section 20 of these Terms.</p>
+      <p>These Terms, together with our <a href="/acceptable-use.html">Acceptable Use Policy</a>, <a href="/privacy.html">Privacy Policy</a>, and any applicable contest rules, form a legal agreement (the "Agreement") between you and Soni Digital LLC, a Texas limited liability company ("Company," "we," "us," or "our"), for your use of the Service.</p>
+      <p>These Terms define the terms and conditions under which you are allowed to use the Service and its Resources. If you do not agree to these Terms, you must immediately discontinue your use of the Service.</p>
+      <p>By creating an account, clicking "I Agree," or otherwise accessing or using the Service, you acknowledge that you have read, understood, and agree to be bound by this Agreement.</p>
 
-            <h4>2.2 Restricted Jurisdictions</h4>
-            <p>The Service is not available to residents of, or persons located in:</p>
-            <ul>
-                <li>Arizona</li>
-                <li>Iowa</li>
-                <li>Louisiana</li>
-                <li>Montana</li>
-                <li>Any other jurisdiction where the Service would be prohibited by applicable law</li>
-            </ul>
-            <p>
-                We reserve the right to restrict access from any location at our sole discretion and to update the list of Restricted Jurisdictions at any time.
-            </p>
+      <h3>2. Eligibility</h3>
+      <h4>2.1 General Requirements</h4>
+      <p>To use the Service, you must:</p>
+      <ul>
+        <li>be at least eighteen (18) years of age;</li>
+        <li>be a resident of the United States;</li>
+        <li>not be located in a Restricted Jurisdiction (see Section 2.2); and</li>
+        <li>have the legal capacity to enter into this Agreement.</li>
+      </ul>
+      <p>You represent and warrant that you meet all eligibility requirements stated above. We reserve the right to request proof of eligibility at any time and to suspend or terminate accounts that do not meet these requirements.</p>
 
-            <h3>3. Description of the Service</h3>
-            <p>
-                PickWho is a free sports prediction entertainment application. The Service allows Users to:
-            </p>
-            <ul>
-                <li><strong>Make Predictions:</strong> Select predicted winners of professional sporting events (including NFL, NBA, and other leagues as available) during weekly contest periods;</li>
-                <li><strong>Compete on Leaderboards:</strong> View rankings against other Users based on prediction accuracy;</li>
-                <li><strong>Win Prizes:</strong> Eligible Users may receive Prizes based on contest performance, subject to Company discretion (see Section 8);</li>
-                <li><strong>Track Performance:</strong> View personal prediction history, accuracy statistics, and achievements; and</li>
-                <li><strong>Subscribe to PickWho Premium:</strong> Optionally purchase a premium subscription for an ad-free experience (see Section 6).</li>
-            </ul>
-            <p>
-                The Service is provided purely for entertainment purposes. PickWho is not a gambling, betting, or wagering service. Users never deposit money, wager money, or risk any financial loss. All participation in free contests is completely free of charge. There are no odds, point spreads, or parlays. Users simply predict which team they believe will win a given sporting event.
-            </p>
+      <h4>2.2 Restricted Jurisdictions</h4>
+      <p>The Service is not available to residents of, or persons located in:</p>
+      <ul>
+        <li>Arizona</li>
+        <li>Iowa</li>
+        <li>Louisiana</li>
+        <li>Montana</li>
+        <li>Any other jurisdiction where the Service would be prohibited by applicable law</li>
+      </ul>
+      <p>We reserve the right to restrict access from any location at our sole discretion and to update the list of Restricted Jurisdictions at any time.</p>
 
-            <h3>4. Responsible Use and Conduct</h3>
+      <h3>3. Description of the Service</h3>
+      <p>PickWho is a free sports prediction entertainment application. The Service allows Users to:</p>
+      <ul>
+        <li><strong>Make Predictions:</strong> Select predicted winners of professional sporting events (including NFL, NBA, and other leagues as available) during weekly contest periods;</li>
+        <li><strong>Compete on Leaderboards:</strong> View rankings against other Users based on prediction accuracy;</li>
+        <li><strong>Win Prizes:</strong> Eligible Users may receive Prizes based on contest performance, subject to Company discretion (see Section 8);</li>
+        <li><strong>Track Performance:</strong> View personal prediction history, accuracy statistics, and achievements; and</li>
+        <li><strong>Subscribe to PickWho Premium:</strong> Optionally purchase a premium subscription for an ad-free experience (see Section 6).</li>
+      </ul>
+      <p>The Service is provided purely for entertainment purposes. PickWho is not a gambling, betting, or wagering service. Users never deposit money, wager money, or risk any financial loss. All participation in free contests is completely free of charge. There are no odds, point spreads, or parlays. Users simply predict which team they believe will win a given sporting event.</p>
 
-            <h4>4.1 General</h4>
-            <p>
-                You agree to use the Service only for the purposes intended and as permitted by this Agreement and applicable law. If you use the Service in breach of this Agreement or applicable law, we may suspend or terminate your account.
-            </p>
-            <p>
-                Your account is personal, for your use only, and may not be shared with or used by any other person. Each User may maintain only one (1) account. Creating, maintaining, or using multiple accounts is strictly prohibited and is grounds for immediate termination and Prize disqualification.
-            </p>
-            <p>
-                You represent and warrant that information you provide when registering for an account is accurate, and you shall not misrepresent personal information or otherwise be untruthful about your identity in connection with your use of the Service. The Company reserves all rights to take action against anyone who misrepresents personal information or is otherwise untruthful about their identity. Notwithstanding the foregoing, you acknowledge that the Company cannot guarantee the accuracy of any information submitted by any User or the identity of any User.
-            </p>
+      <h3>4. Responsible Use and Conduct</h3>
+      <h4>4.1 General</h4>
+      <p>You agree to use the Service only for the purposes intended and as permitted by this Agreement and applicable law. If you use the Service in breach of this Agreement or applicable law, we may suspend or terminate your account.</p>
+      <p>Your account is personal, for your use only, and may not be shared with or used by any other person. Each User may maintain only one (1) account. Creating, maintaining, or using multiple accounts is strictly prohibited and is grounds for immediate termination and Prize disqualification.</p>
+      <p>You represent and warrant that information you provide when registering for an account is accurate, and you shall not misrepresent personal information or otherwise be untruthful about your identity in connection with your use of the Service. The Company reserves all rights to take action against anyone who misrepresents personal information or is otherwise untruthful about their identity. Notwithstanding the foregoing, you acknowledge that the Company cannot guarantee the accuracy of any information submitted by any User or the identity of any User.</p>
 
-            <h4>4.2 Prohibited Conduct</h4>
-            <p>You agree not to:</p>
-            <ul>
-                <li>(a) create or use multiple accounts;</li>
-                <li>(b) use automated tools, bots, scripts, or other automated means to access or interact with the Service;</li>
-                <li>(c) attempt to manipulate contest results, leaderboards, or any other aspect of the Service;</li>
-                <li>(d) engage in collusion with other Users;</li>
-                <li>(e) harass, abuse, threaten, or intimidate other Users;</li>
-                <li>(f) impersonate any person or entity;</li>
-                <li>(g) attempt to gain unauthorized access to the Service, other accounts, or computer systems or networks connected to the Service;</li>
-                <li>(h) interfere with or disrupt the Service, servers, or networks;</li>
-                <li>(i) violate any applicable law, regulation, or third-party rights;</li>
-                <li>(j) use the Service for any commercial purpose without our prior written consent;</li>
-                <li>(k) reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code of any part of the Service; or</li>
-                <li>(l) circumvent, disable, or otherwise interfere with any security-related features of the Service.</li>
-            </ul>
+      <h4>4.2 Prohibited Conduct</h4>
+      <p>You agree not to:</p>
+      <ul>
+        <li>(a) create or use multiple accounts;</li>
+        <li>(b) use automated tools, bots, scripts, or other automated means to access or interact with the Service;</li>
+        <li>(c) attempt to manipulate contest results, leaderboards, or any other aspect of the Service;</li>
+        <li>(d) engage in collusion with other Users;</li>
+        <li>(e) harass, abuse, threaten, or intimidate other Users;</li>
+        <li>(f) impersonate any person or entity;</li>
+        <li>(g) attempt to gain unauthorized access to the Service, other accounts, or computer systems or networks connected to the Service;</li>
+        <li>(h) interfere with or disrupt the Service, servers, or networks;</li>
+        <li>(i) violate any applicable law, regulation, or third-party rights;</li>
+        <li>(j) use the Service for any commercial purpose without our prior written consent;</li>
+        <li>(k) reverse engineer, decompile, disassemble, or otherwise attempt to derive the source code of any part of the Service; or</li>
+        <li>(l) circumvent, disable, or otherwise interfere with any security-related features of the Service.</li>
+      </ul>
 
-            <h3>5. Licensed Rights</h3>
-            <p>
-                The Service and all Resources are the property of the Company and its content licensors (as applicable). We grant you a limited, non-exclusive, revocable, non-transferable, non-sublicensable license to access and use the Service and Resources (the "License") in accordance with this Agreement, solely for your personal, non-commercial entertainment purposes.
-            </p>
-            <p>
-                Except for the rights expressly granted to you in this Agreement, the Company grants no right, title, or interest to you in the Service or Resources. All trademarks, service marks, trade names, logos, and domain names displayed on the Service are the sole property of the Company or its licensors. This Agreement does not grant you any rights to use any mark for any purpose.
-            </p>
-            <p>
-                The Company reserves the right to upgrade, modify, or change the Service at any time. Changes may be communicated to you by in-app notification, email, or other reasonable means.
-            </p>
+      <h3>5. Licensed Rights</h3>
+      <p>The Service and all Resources are the property of the Company and its content licensors (as applicable). We grant you a limited, non-exclusive, revocable, non-transferable, non-sublicensable license to access and use the Service and Resources (the "License") in accordance with this Agreement, solely for your personal, non-commercial entertainment purposes.</p>
+      <p>Except for the rights expressly granted to you in this Agreement, the Company grants no right, title, or interest to you in the Service or Resources. All trademarks, service marks, trade names, logos, and domain names displayed on the Service are the sole property of the Company or its licensors. This Agreement does not grant you any rights to use any mark for any purpose.</p>
+      <p>The Company reserves the right to upgrade, modify, or change the Service at any time. Changes may be communicated to you by in-app notification, email, or other reasonable means.</p>
 
-            <h3>6. PickWho Premium</h3>
+      <h3>6. PickWho Premium</h3>
+      <h4>6.1 Subscription Service</h4>
+      <p>We offer an optional premium subscription ("PickWho Premium") that provides an ad-free experience when saving picks. PickWho Premium does not affect contest eligibility, prediction mechanics, or Prize availability. Subscription features, pricing, and terms are displayed at the time of purchase.</p>
 
-            <h4>6.1 Subscription Service</h4>
-            <p>
-                We offer an optional premium subscription ("PickWho Premium") that provides an ad-free experience when saving picks. PickWho Premium does not affect contest eligibility, prediction mechanics, or Prize availability. Subscription features, pricing, and terms are displayed at the time of purchase.
-            </p>
+      <h4>6.2 Free Trials</h4>
+      <p>We may, at our sole discretion, offer you a Trial of PickWho Premium. We reserve the right to revoke the Trial and place your account on hold if we determine that you are not eligible. If offered, free trial periods convert to paid subscriptions unless canceled before the trial ends. Unused trial time is forfeited upon subscription purchase.</p>
 
-            <h4>6.2 Free Trials</h4>
-            <p>
-                We may, at our sole discretion, offer you a Trial of PickWho Premium. We reserve the right to revoke the Trial and place your account on hold if we determine that you are not eligible. If offered, free trial periods convert to paid subscriptions unless canceled before the trial ends. Unused trial time is forfeited upon subscription purchase.
-            </p>
+      <h4>6.3 Payments and Renewal</h4>
+      <p>PickWho Premium subscriptions can be purchased through the Apple App Store or Google Play Store. Payment will be charged to the account associated with your applicable distribution platform. Subscriptions automatically renew unless canceled at least twenty-four (24) hours before the end of the current Subscription Period. You can manage and cancel your subscription through your device's account settings or the applicable distribution platform.</p>
+      <p>All paid subscriptions are non-refundable except to the extent required by applicable law or the refund policies of the applicable distribution platform. The Company cannot be held responsible for the policies of third-party distribution platforms.</p>
 
-            <h4>6.3 Payments and Renewal</h4>
-            <p>
-                PickWho Premium subscriptions can be purchased through the Apple App Store or Google Play Store. Payment will be charged to the account associated with your applicable distribution platform. Subscriptions automatically renew unless canceled at least twenty-four (24) hours before the end of the current Subscription Period. You can manage and cancel your subscription through your device's account settings or the applicable distribution platform.
-            </p>
-            <p>
-                All paid subscriptions are non-refundable except to the extent required by applicable law or the refund policies of the applicable distribution platform. The Company cannot be held responsible for the policies of third-party distribution platforms.
-            </p>
+      <h4>6.4 Price Changes</h4>
+      <p>The Company may change the price for PickWho Premium. Any price change will not be effective until the beginning of your next Subscription Period. Your continued use of PickWho Premium after such change constitutes your acceptance of the new price. If you do not agree with the price change, you may cancel your subscription prior to the next renewal date. We do not provide refunds if the price for PickWho Premium drops or if we offer subsequent promotional pricing.</p>
 
-            <h4>6.4 Price Changes</h4>
-            <p>
-                The Company may change the price for PickWho Premium. Any price change will not be effective until the beginning of your next Subscription Period. Your continued use of PickWho Premium after such change constitutes your acceptance of the new price. If you do not agree with the price change, you may cancel your subscription prior to the next renewal date. We do not provide refunds if the price for PickWho Premium drops or if we offer subsequent promotional pricing.
-            </p>
+      <h4>6.5 Taxes</h4>
+      <p>Prices listed may not include sales or other applicable taxes. Applicable tax may be calculated and added at the time you complete a transaction.</p>
 
-            <h4>6.5 Taxes</h4>
-            <p>
-                Prices listed may not include sales or other applicable taxes. Applicable tax may be calculated and added at the time you complete a transaction.
-            </p>
+      <h3>7. Third-Party Applications and Services</h3>
+      <p>The Service may be integrated with or rely upon third-party applications, platforms, and services, including the Apple App Store, Google Play Store, third-party authentication providers (such as Google Sign-In and Apple Sign-In), advertising networks, and sports data providers (collectively, "Third-Party Applications").</p>
+      <p>Your use of any Third-Party Application is governed by the respective terms and conditions and privacy policies of each such Third-Party Application. You understand and agree that the Company does not endorse any Third-Party Application and shall not be liable for any Third-Party Application under any circumstances, including the failure or unavailability of any such Third-Party Application.</p>
 
-            <h3>7. Third-Party Applications and Services</h3>
-            <p>
-                The Service may be integrated with or rely upon third-party applications, platforms, and services, including the Apple App Store, Google Play Store, third-party authentication providers (such as Google Sign-In and Apple Sign-In), advertising networks, and sports data providers (collectively, "Third-Party Applications").
-            </p>
-            <p>
-                Your use of any Third-Party Application is governed by the respective terms and conditions and privacy policies of each such Third-Party Application. You understand and agree that the Company does not endorse any Third-Party Application and shall not be liable for any Third-Party Application under any circumstances, including the failure or unavailability of any such Third-Party Application.
-            </p>
+      <h3>8. Prizes and Rewards</h3>
+      <p>From time to time, we may offer Prizes to contest participants. You acknowledge and agree that:</p>
+      <ul>
+        <li>(a) Prize eligibility, value, form, availability, and distribution methods are determined solely by the Company in its absolute discretion;</li>
+        <li>(b) Prizes may be modified, suspended, or discontinued at any time without notice;</li>
+        <li>(c) winners are responsible for all applicable taxes on Prizes received;</li>
+        <li>(d) we reserve the right to disqualify any User suspected of fraud, cheating, collusion, or any violation of this Agreement;</li>
+        <li>(e) Prize claims may require identity verification and confirmation of eligibility;</li>
+        <li>(f) Prizes are non-transferable and have no cash value unless otherwise specified by the Company; and</li>
+        <li>(g) if a contest or Prize is voided, canceled, or altered for any reason (including technical failure, fraud, or regulatory concern), the Company shall have no obligation to award a substitute Prize or other compensation.</li>
+      </ul>
+      <p>The Company may publish contest-specific rules that supplement this Section. In the event of a conflict between contest-specific rules and these Terms, the contest-specific rules shall prevail with respect to that contest.</p>
 
-            <h3>8. Prizes and Rewards</h3>
-            <p>
-                From time to time, we may offer Prizes to contest participants. You acknowledge and agree that:
-            </p>
-            <ul>
-                <li>(a) Prize eligibility, value, form, availability, and distribution methods are determined solely by the Company in its absolute discretion;</li>
-                <li>(b) Prizes may be modified, suspended, or discontinued at any time without notice;</li>
-                <li>(c) winners are responsible for all applicable taxes on Prizes received;</li>
-                <li>(d) we reserve the right to disqualify any User suspected of fraud, cheating, collusion, or any violation of this Agreement;</li>
-                <li>(e) Prize claims may require identity verification and confirmation of eligibility;</li>
-                <li>(f) Prizes are non-transferable and have no cash value unless otherwise specified by the Company; and</li>
-                <li>(g) if a contest or Prize is voided, canceled, or altered for any reason (including technical failure, fraud, or regulatory concern), the Company shall have no obligation to award a substitute Prize or other compensation.</li>
-            </ul>
-            <p>
-                The Company may publish contest-specific rules that supplement this Section. In the event of a conflict between contest-specific rules and these Terms, the contest-specific rules shall prevail with respect to that contest.
-            </p>
+      <h3>9. Account Security</h3>
+      <p>You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must promptly notify us about any possible misuse of your account or any security incident related to the Service.</p>
+      <p>We may suspend or terminate your account, or place your account on hold, in order to protect you, the Company, or our partners from identity theft, fraud, or other unauthorized activity.</p>
 
-            <h3>9. Account Security</h3>
-            <p>
-                You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must promptly notify us about any possible misuse of your account or any security incident related to the Service.
-            </p>
-            <p>
-                We may suspend or terminate your account, or place your account on hold, in order to protect you, the Company, or our partners from identity theft, fraud, or other unauthorized activity.
-            </p>
+      <h3>10. Data Protection and Privacy</h3>
+      <p>Your use of the Service is also governed by our <a href="/privacy.html">Privacy Policy</a>, which describes how we collect, use, and protect your personal information. By using the Service, you acknowledge that you have read and understood our Privacy Policy and consent to the practices described therein.</p>
 
-            <h3>10. Data Protection and Privacy</h3>
-            <p>
-                Your use of the Service is also governed by our <a href="/privacy.html">Privacy Policy</a>, which describes how we collect, use, and protect your personal information. By using the Service, you acknowledge that you have read and understood our Privacy Policy and consent to the practices described therein.
-            </p>
+      <h3>11. Term and Termination</h3>
+      <h4>11.1 Term</h4>
+      <p>This Agreement will continue to apply for as long as you use the Service or maintain an account.</p>
 
-            <h3>11. Term and Termination</h3>
+      <h4>11.2 Termination by You</h4>
+      <p>You may terminate your account at any time by using the "Delete Account" feature in the app settings or by contacting us at the email address listed in Section 19. Account deletion is permanent and will result in the removal of your data, including predictions, statistics, and leaderboard history.</p>
 
-            <h4>11.1 Term</h4>
-            <p>
-                This Agreement will continue to apply for as long as you use the Service or maintain an account.
-            </p>
+      <h4>11.3 Termination by Us</h4>
+      <p>The Company may suspend or terminate your account and access to the Service at any time, including in the event of your actual or suspected unauthorized use of the Service or non-compliance with this Agreement. If you or the Company terminates this Agreement, or if the Company suspends your access to the Service in accordance with this Agreement, you agree that the Company shall have no liability or responsibility to you, and the Company will not refund any amounts that you have already paid, to the fullest extent permitted by applicable law.</p>
+      <p>Without limiting the foregoing, the Company may suspend or terminate your account immediately, without prior notice, for any reason, including:</p>
+      <ul>
+        <li>(a) breach of this Agreement;</li>
+        <li>(b) fraudulent or illegal activity;</li>
+        <li>(c) upon request by law enforcement or government agencies;</li>
+        <li>(d) discontinuation or material modification of the Service;</li>
+        <li>(e) technical or security issues; or</li>
+        <li>(f) at our sole discretion for any or no reason.</li>
+      </ul>
 
-            <h4>11.2 Termination by You</h4>
-            <p>
-                You may terminate your account at any time by using the "Delete Account" feature in the app settings or by contacting us at the email address listed in Section 19. Account deletion is permanent and will result in the removal of your data, including predictions, statistics, and leaderboard history.
-            </p>
+      <h4>11.4 Effect of Termination</h4>
+      <p>Upon termination, your right to use the Service and any License granted hereunder shall immediately cease. Sections of this Agreement that, either explicitly or by their nature, must remain in effect after termination shall survive termination, including without limitation Sections 5, 8, 12, 13, 14, 15, 16, 17, 18, and 19.</p>
 
-            <h4>11.3 Termination by Us</h4>
-            <p>
-                The Company may suspend or terminate your account and access to the Service at any time, including in the event of your actual or suspected unauthorized use of the Service or non-compliance with this Agreement. If you or the Company terminates this Agreement, or if the Company suspends your access to the Service in accordance with this Agreement, you agree that the Company shall have no liability or responsibility to you, and the Company will not refund any amounts that you have already paid, to the fullest extent permitted by applicable law.
-            </p>
-            <p>Without limiting the foregoing, the Company may suspend or terminate your account immediately, without prior notice, for any reason, including:</p>
-            <ul>
-                <li>(a) breach of this Agreement;</li>
-                <li>(b) fraudulent or illegal activity;</li>
-                <li>(c) upon request by law enforcement or government agencies;</li>
-                <li>(d) discontinuation or material modification of the Service;</li>
-                <li>(e) technical or security issues; or</li>
-                <li>(f) at our sole discretion for any or no reason.</li>
-            </ul>
+      <h3>12. Warranty and Disclaimer</h3>
+      <p class="caps-text">THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COMPANY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.</p>
+      <p>The Company shall not be responsible for any issues caused by: (i) hardware, software, or other components that are not part of the Service; (ii) errors or problems caused by your non-compliance with this Agreement; or (iii) errors or problems caused by third parties not acting on behalf of the Company.</p>
 
-            <h4>11.4 Effect of Termination</h4>
-            <p>
-                Upon termination, your right to use the Service and any License granted hereunder shall immediately cease. Sections of this Agreement that, either explicitly or by their nature, must remain in effect after termination shall survive termination, including without limitation Sections 5, 8, 12, 13, 14, 15, 16, 17, 18, and 19.
-            </p>
+      <h3>13. Limitation of Liability</h3>
+      <p class="caps-text">TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL COMPANY, ITS OFFICERS, SHAREHOLDERS, EMPLOYEES, AGENTS, DIRECTORS, SUBSIDIARIES, AFFILIATES, SUCCESSORS, ASSIGNS, SUPPLIERS, OR LICENSORS BE LIABLE FOR (1) ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY, OR CONSEQUENTIAL DAMAGES; OR (2) ANY LOSS OF USE, DATA, BUSINESS, OR PROFITS (WHETHER DIRECT OR INDIRECT), IN ALL CASES ARISING OUT OF THE USE OR INABILITY TO USE THE SERVICE REGARDLESS OF LEGAL THEORY, WITHOUT REGARD TO WHETHER COMPANY HAS BEEN MADE AWARE OF THE POSSIBILITY OF THOSE DAMAGES, AND EVEN IF A REMEDY FAILS OF ITS ESSENTIAL PURPOSE. COMPANY'S AGGREGATE LIABILITY FOR ALL CLAIMS ARISING UNDER OR IN CONNECTION WITH THIS AGREEMENT SHALL BE LIMITED TO THE AMOUNTS PAID BY YOU TO COMPANY UNDER THIS AGREEMENT DURING THE TWELVE MONTHS IMMEDIATELY PRECEDING THE LAST EVENT GIVING RISE TO LIABILITY.</p>
 
-            <h3>12. Warranty and Disclaimer</h3>
-            <p class="caps-text">
-                THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COMPANY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE.
-            </p>
-            <p>
-                The Company shall not be responsible for any issues caused by: (i) hardware, software, or other components that are not part of the Service; (ii) errors or problems caused by your non-compliance with this Agreement; or (iii) errors or problems caused by third parties not acting on behalf of the Company.
-            </p>
+      <h3>14. Indemnification</h3>
+      <p>To the fullest extent permitted by applicable law, you agree to indemnify and hold harmless the Company, its affiliates, and their directors, officers, employees, agents, and licensors, from and against any claims and all losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from:</p>
+      <ul>
+        <li>(a) your breach of this Agreement;</li>
+        <li>(b) any activity conducted through your account, whether authorized by you or not;</li>
+        <li>(c) your violation of any law or the rights of a third party, including privacy, publicity, or intellectual property rights; and</li>
+        <li>(d) any dispute between you and a third party relating to your use of the Service.</li>
+      </ul>
+      <p>We reserve the right to take over the exclusive defense of any claim for which we are entitled to indemnification under this Section. In such event, you shall provide us with such cooperation as is reasonably requested by us.</p>
 
-            <h3>13. Limitation of Liability</h3>
-            <p class="caps-text">
-                TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL COMPANY, ITS OFFICERS, SHAREHOLDERS, EMPLOYEES, AGENTS, DIRECTORS, SUBSIDIARIES, AFFILIATES, SUCCESSORS, ASSIGNS, SUPPLIERS, OR LICENSORS BE LIABLE FOR (1) ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, EXEMPLARY, OR CONSEQUENTIAL DAMAGES; OR (2) ANY LOSS OF USE, DATA, BUSINESS, OR PROFITS (WHETHER DIRECT OR INDIRECT), IN ALL CASES ARISING OUT OF THE USE OR INABILITY TO USE THE SERVICE REGARDLESS OF LEGAL THEORY, WITHOUT REGARD TO WHETHER COMPANY HAS BEEN MADE AWARE OF THE POSSIBILITY OF THOSE DAMAGES, AND EVEN IF A REMEDY FAILS OF ITS ESSENTIAL PURPOSE. COMPANY'S AGGREGATE LIABILITY FOR ALL CLAIMS ARISING UNDER OR IN CONNECTION WITH THIS AGREEMENT SHALL BE LIMITED TO THE AMOUNTS PAID BY YOU TO COMPANY UNDER THIS AGREEMENT DURING THE TWELVE MONTHS IMMEDIATELY PRECEDING THE LAST EVENT GIVING RISE TO LIABILITY.
-            </p>
+      <h3>15. Changes to These Terms</h3>
+      <p>We reserve the right to change these Terms from time to time. If there is a material change to these Terms, we will notify you either by email, in-app notification, or by posting notice within the Service (as appropriate). We will update the "Effective Date" at the top of these Terms to reflect the date of any material revision.</p>
+      <p>Your continued use of the Service after such changes constitutes acknowledgment and agreement to the modified Terms. If you do not wish to continue using the Service under the new version of the Terms, you may terminate your account.</p>
+      <p>It is your responsibility to review these Terms periodically.</p>
 
-            <h3>14. Indemnification</h3>
-            <p>
-                To the fullest extent permitted by applicable law, you agree to indemnify and hold harmless the Company, its affiliates, and their directors, officers, employees, agents, and licensors, from and against any claims and all losses, expenses, damages, and costs, including reasonable attorneys' fees, resulting from:
-            </p>
-            <ul>
-                <li>(a) your breach of this Agreement;</li>
-                <li>(b) any activity conducted through your account, whether authorized by you or not;</li>
-                <li>(c) your violation of any law or the rights of a third party, including privacy, publicity, or intellectual property rights; and</li>
-                <li>(d) any dispute between you and a third party relating to your use of the Service.</li>
-            </ul>
-            <p>
-                We reserve the right to take over the exclusive defense of any claim for which we are entitled to indemnification under this Section. In such event, you shall provide us with such cooperation as is reasonably requested by us.
-            </p>
+      <h3>16. Force Majeure</h3>
+      <p>Neither party shall be liable for any failure or delay in performing its obligations under this Agreement where such failure or delay results from any cause beyond the reasonable control of that party, including but not limited to: acts of God, natural disasters, pandemics, epidemics, public health emergencies, government actions or orders, war, terrorism, civil unrest, riots, embargoes, labor disputes or strikes, power failures, internet or telecommunications failures, cyberattacks, fire, flood, earthquake, severe weather events, or other catastrophic events (each, a "Force Majeure Event").</p>
+      <p>If a Force Majeure Event occurs, the affected party's obligations under this Agreement shall be suspended for the duration of the Force Majeure Event. The Company may modify, suspend, or cancel any contest, Prize, or feature of the Service during a Force Majeure Event without liability. The Company shall use reasonable efforts to notify Users of any material impact on the Service resulting from a Force Majeure Event.</p>
+      <p>For the avoidance of doubt, a Force Majeure Event shall not excuse any payment obligations that accrued prior to the occurrence of such event.</p>
 
-            <h3>15. Changes to These Terms</h3>
-            <p>
-                We reserve the right to change these Terms from time to time. If there is a material change to these Terms, we will notify you either by email, in-app notification, or by posting notice within the Service (as appropriate). We will update the "Effective Date" at the top of these Terms to reflect the date of any material revision.
-            </p>
-            <p>
-                Your continued use of the Service after such changes constitutes acknowledgment and agreement to the modified Terms. If you do not wish to continue using the Service under the new version of the Terms, you may terminate your account.
-            </p>
-            <p>
-                It is your responsibility to review these Terms periodically.
-            </p>
+      <h3>17. Modifications to the Service</h3>
+      <p>The Company reserves the right to modify, suspend, or discontinue the Service (or any part thereof) at any time, with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuation of the Service.</p>
 
-            <h3>16. Force Majeure</h3>
-            <p>
-                Neither party shall be liable for any failure or delay in performing its obligations under this Agreement where such failure or delay results from any cause beyond the reasonable control of that party, including but not limited to: acts of God, natural disasters, pandemics, epidemics, public health emergencies, government actions or orders, war, terrorism, civil unrest, riots, embargoes, labor disputes or strikes, power failures, internet or telecommunications failures, cyberattacks, fire, flood, earthquake, severe weather events, or other catastrophic events (each, a "Force Majeure Event").
-            </p>
-            <p>
-                If a Force Majeure Event occurs, the affected party's obligations under this Agreement shall be suspended for the duration of the Force Majeure Event. The Company may modify, suspend, or cancel any contest, Prize, or feature of the Service during a Force Majeure Event without liability. The Company shall use reasonable efforts to notify Users of any material impact on the Service resulting from a Force Majeure Event.
-            </p>
-            <p>
-                For the avoidance of doubt, a Force Majeure Event shall not excuse any payment obligations that accrued prior to the occurrence of such event.
-            </p>
+      <h3>18. Governing Law and Jurisdiction</h3>
+      <p>This Agreement is governed by the laws of the State of Texas, United States of America, without regard to its conflict of law provisions. Any action to enforce this Agreement shall be brought exclusively in the state or federal courts located in Texas. You hereby consent to the personal jurisdiction and venue of such courts and waive any jurisdictional, venue, or inconvenient forum objections to such courts.</p>
 
-            <h3>17. Modifications to the Service</h3>
-            <p>
-                The Company reserves the right to modify, suspend, or discontinue the Service (or any part thereof) at any time, with or without notice. We shall not be liable to you or any third party for any modification, suspension, or discontinuation of the Service.
-            </p>
+      <h3>19. Contact Information</h3>
+      <p>If you have any questions about these Terms, please contact us:</p>
+      <p><strong>Soni Digital LLC</strong><br>Email: <a href="mailto:info@pickwhoisfree.com">info@pickwhoisfree.com</a></p>
 
-            <h3>18. Governing Law and Jurisdiction</h3>
-            <p>
-                This Agreement is governed by the laws of the State of Texas, United States of America, without regard to its conflict of law provisions. Any action to enforce this Agreement shall be brought exclusively in the state or federal courts located in Texas. You hereby consent to the personal jurisdiction and venue of such courts and waive any jurisdictional, venue, or inconvenient forum objections to such courts.
-            </p>
+      <h3>20. Definitions</h3>
+      <p>"<strong>Agreement</strong>" means the collective terms encompassing these Terms, the Privacy Policy, the Acceptable Use Policy, and any applicable contest rules.</p>
+      <p>"<strong>Company</strong>" means Soni Digital LLC, a Texas limited liability company.</p>
+      <p>"<strong>Force Majeure Event</strong>" has the meaning set forth in Section 16.</p>
+      <p>"<strong>License</strong>" means the license granted to you pursuant to Section 5 of these Terms.</p>
+      <p>"<strong>PickWho Premium</strong>" means the optional paid subscription described in Section 6.</p>
+      <p>"<strong>Prize(s)</strong>" means any gift cards, rewards, or other items of value that the Company may, in its sole discretion, make available to eligible contest participants.</p>
+      <p>"<strong>Resources</strong>" means the information, data, services, features, and tools provided to you through the Service, including sports data, leaderboard rankings, and prediction history.</p>
+      <p>"<strong>Restricted Jurisdiction</strong>" means any jurisdiction identified in Section 2.2 or otherwise designated by the Company as restricted.</p>
+      <p>"<strong>Service</strong>" means the PickWho mobile application and all related features, content, and functionality.</p>
+      <p>"<strong>Subscription Period</strong>" means the duration of a PickWho Premium subscription, as applicable.</p>
+      <p>"<strong>Terms</strong>" means these PickWho Terms of Service.</p>
+      <p>"<strong>Third-Party Applications</strong>" means websites, platforms, and services delivered by third parties that are integrated with or relied upon by the Service, including distribution platforms, authentication providers, advertising networks, and sports data providers.</p>
+      <p>"<strong>Trial</strong>" means a free trial period for PickWho Premium, if offered at the Company's discretion.</p>
+      <p>"<strong>User</strong>" or "<strong>you</strong>" means any individual who accesses or uses the Service.</p>
 
-            <h3>19. Contact Information</h3>
-            <p>
-                If you have any questions about these Terms, please contact us:
-            </p>
-            <p>
-                <strong>Soni Digital LLC</strong><br>
-                Email: <a href="mailto:info@pickwhoisfree.com">info@pickwhoisfree.com</a>
-            </p>
-
-            <h3>20. Definitions</h3>
-            <p>
-                "<strong>Agreement</strong>" means the collective terms encompassing these Terms, the Privacy Policy, the Acceptable Use Policy, and any applicable contest rules.
-            </p>
-            <p>
-                "<strong>Company</strong>" means Soni Digital LLC, a Texas limited liability company.
-            </p>
-            <p>
-                "<strong>Force Majeure Event</strong>" has the meaning set forth in Section 16.
-            </p>
-            <p>
-                "<strong>License</strong>" means the license granted to you pursuant to Section 5 of these Terms.
-            </p>
-            <p>
-                "<strong>PickWho Premium</strong>" means the optional paid subscription described in Section 6.
-            </p>
-            <p>
-                "<strong>Prize(s)</strong>" means any gift cards, rewards, or other items of value that the Company may, in its sole discretion, make available to eligible contest participants.
-            </p>
-            <p>
-                "<strong>Resources</strong>" means the information, data, services, features, and tools provided to you through the Service, including sports data, leaderboard rankings, and prediction history.
-            </p>
-            <p>
-                "<strong>Restricted Jurisdiction</strong>" means any jurisdiction identified in Section 2.2 or otherwise designated by the Company as restricted.
-            </p>
-            <p>
-                "<strong>Service</strong>" means the PickWho mobile application and all related features, content, and functionality.
-            </p>
-            <p>
-                "<strong>Subscription Period</strong>" means the duration of a PickWho Premium subscription, as applicable.
-            </p>
-            <p>
-                "<strong>Terms</strong>" means these PickWho Terms of Service.
-            </p>
-            <p>
-                "<strong>Third-Party Applications</strong>" means websites, platforms, and services delivered by third parties that are integrated with or relied upon by the Service, including distribution platforms, authentication providers, advertising networks, and sports data providers.
-            </p>
-            <p>
-                "<strong>Trial</strong>" means a free trial period for PickWho Premium, if offered at the Company's discretion.
-            </p>
-            <p>
-                "<strong>User</strong>" or "<strong>you</strong>" means any individual who accesses or uses the Service.
-            </p>
-
-            <div class="back-link">
-                <a href="/">Back to PickWho</a>
-            </div>
-        </div>
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="/acceptable-use.html">Acceptable Use Policy</a>
-            <a href="/privacy.html">Privacy Policy</a>
-            <a href="/faq.html">FAQ</a>
-        </div>
-        <p>&copy; 2026 Soni Digital LLC. All rights reserved.</p>
+      <p class="footer-links">
+        <a href="/acceptable-use.html">Acceptable Use</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/faq.html">FAQ</a>
+      </p>
+      <p>&copy; 2026 PickWho &middot; Soni Digital LLC</p>
     </footer>
+
+  </div>
 </body>
 </html>
