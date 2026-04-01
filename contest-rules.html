@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PickWho - Official Contest Rules</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --teal-primary: #00E6CA;
+      --teal-dark: #00B89E;
+      --teal-light: #33FFDD;
+      --dark-navy: #0A1E1B;
+      --dark-teal-gray: #132E2A;
+      --light-teal-gray: #1B3D37;
+      --gold: #FFD700;
+      --text-primary: #FFFFFF;
+      --text-secondary: #B0BEC5;
+      --text-disabled: #607D8B;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--dark-navy);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .bg-gradient {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, var(--dark-navy) 0%, var(--dark-teal-gray) 50%, var(--light-teal-gray) 100%);
+      z-index: -2;
+    }
+
+    .bg-glow {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 230, 202, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      animation: floatGlow 12s ease-in-out infinite;
+    }
+    .bg-glow.one { top: -200px; right: -200px; }
+    .bg-glow.two { bottom: -200px; left: -200px; animation-delay: -6s; }
+
+    @keyframes floatGlow {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-30px, 30px) scale(1.1); }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 900;
+      color: #FFFFFF;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--teal-primary); }
+
+    /* PAGE HEADER */
+    .page-header {
+      text-align: center;
+      padding: 32px 0 8px;
+    }
+    .page-header h1 {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .page-header .effective-date {
+      color: var(--text-secondary);
+      font-size: 15px;
+    }
+
+    /* CONTENT */
+    .content-box {
+      margin: 32px 0 40px;
+      padding: 36px 32px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(0, 230, 202, 0.04) 0%, rgba(255,255,255,0.02) 100%);
+      border: 1px solid rgba(0, 230, 202, 0.12);
+    }
+
+    h3 {
+      color: var(--teal-primary);
+      margin-top: 28px;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    h3:first-child { margin-top: 0; }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    ul {
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+      padding-left: 24px;
+      font-size: 15px;
+    }
+    li { margin-bottom: 6px; }
+
+    a { color: var(--teal-primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .disclaimer-box {
+      margin-top: 28px;
+      padding: 24px;
+      border-radius: 16px;
+      background: rgba(0, 230, 202, 0.06);
+      border: 1px solid rgba(0, 230, 202, 0.2);
+    }
+    .disclaimer-box h3 { margin-top: 0; }
+
+    /* FOOTER */
+    footer {
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      text-align: center;
+    }
+    footer p { color: var(--text-disabled); font-size: 13px; }
+    .footer-links { margin-bottom: 8px; }
+    .footer-links a {
+      color: var(--text-disabled);
+      text-decoration: none;
+      margin: 0 8px;
+      font-size: 13px;
+    }
+    .footer-links a:hover { color: var(--teal-primary); }
+
+    @media (max-width: 600px) {
+      .content-box { padding: 24px 18px; }
+      .disclaimer-box { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-glow one"></div>
+  <div class="bg-glow two"></div>
+
+  <div class="container">
+
+    <nav>
+      <a href="/" class="nav-logo">PICK<span>WHO</span></a>
+    </nav>
+
+    <div class="page-header">
+      <h1>Official Contest Rules</h1>
+      <p class="effective-date">Effective Date: April 1, 2026</p>
+    </div>
+
+    <div class="content-box">
+
+      <h3>1. Overview</h3>
+      <p>PickWho is a free-to-play sports prediction game operated by Soni Digital LLC ("PickWho," "we," "us," or "our"). Users make picks on featured games each contest period. <strong>No purchase is necessary to enter or win.</strong> Purchasing a premium subscription does not improve your chances of winning.</p>
+
+      <h3>2. Eligibility</h3>
+      <p>The contest is open to legal residents of the United States who are 17 years of age or older. Employees of PickWho (Soni Digital LLC) and their immediate family members are not eligible to win prizes. Void where prohibited by law.</p>
+
+      <h3>3. How to Enter</h3>
+      <p>To enter, create a free account in the PickWho app and submit your picks for the featured games during the contest period. Each user may submit one pick per featured game. Picks must be submitted before the posted lock time for each game. No purchase, payment, or subscription is required to enter.</p>
+
+      <h3>4. Contest Period</h3>
+      <p>Each contest runs for a defined period (typically one week). The start and end dates are displayed in the app. All times referenced in the app are in Central Time (CT) unless otherwise stated.</p>
+
+      <h3>5. Determining Winners</h3>
+      <p>Winners are determined by the accuracy of their picks during the contest period. In the event of a tie, tiebreaker criteria (such as earliest pick submission time) will be applied. Contest results as determined by PickWho are final.</p>
+
+      <h3>6. Prizes</h3>
+      <p>Prizes, if any, are described in the app for each contest period. Prize values and availability may vary at PickWho's sole discretion. No substitution, transfer, or cash equivalent of prizes is permitted except at PickWho's sole discretion. Winners are responsible for any applicable federal, state, and local taxes on prizes.</p>
+
+      <h3>7. No Gambling</h3>
+      <p>PickWho is a free-to-play prediction game. <strong>No real money is wagered on any pick.</strong> This is not a gambling service. No entry fee is required to participate in any contest.</p>
+
+      <h3>8. General Conditions</h3>
+      <p>PickWho reserves the right to cancel, suspend, or modify any contest if fraud, technical failures, or any other factor beyond reasonable control impairs the integrity of the contest, as determined by PickWho in its sole discretion. PickWho reserves the right to disqualify any participant who tampers with the entry process, violates these rules, or acts in a disruptive or unsportsmanlike manner.</p>
+
+      <h3>9. Limitation of Liability</h3>
+      <p>PickWho and its affiliates, officers, directors, employees, and agents are not responsible for any injuries, losses, or damages of any kind arising from participation in any contest, or from the acceptance, possession, or use of any prize.</p>
+
+      <h3>10. Privacy</h3>
+      <p>Information collected from participants is subject to our <a href="/privacy.html">Privacy Policy</a>. By entering a contest, you consent to the collection and use of your information as described therein.</p>
+
+      <div class="disclaimer-box">
+        <h3>11. Apple Disclaimer</h3>
+        <p>Apple Inc. is not a sponsor of, and is not involved in any way with, any PickWho contest or sweepstakes. Apple is not responsible for any claims, losses, liability, damages, or injuries arising from or related to participation in any contest or the use of any prize. All questions, comments, or complaints regarding the contest should be directed to PickWho, not Apple.</p>
+      </div>
+
+      <h3>12. Governing Law</h3>
+      <p>These Official Contest Rules are governed by and construed in accordance with the laws of the State of Texas, without regard to its conflict of laws principles.</p>
+
+      <h3>13. Contact</h3>
+      <p>For questions about these rules, contact us at <a href="mailto:info@pickwhoisfree.com">info@pickwhoisfree.com</a>.</p>
+
+    </div>
+
+    <footer>
+      <p class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/acceptable-use.html">Acceptable Use</a>
+        <a href="/faq.html">FAQ</a>
+      </p>
+      <p>&copy; 2026 PickWho &middot; Soni Digital LLC</p>
+    </footer>
+
+  </div>
+</body>
+</html>
