@@ -3,6 +3,7 @@
 google.com, pub-6639027591546236, DIRECT, f08c47fec0942fa0
 facebook.com, 1229704415777002, DIRECT, c3e20eee3f780d68
 unity.com, 8876188, DIRECT, 96cabb5fbdde37a7
+vungle.com, 6a43bbb0ede581a04247145f, DIRECT, c107d686becd2d77
 
 # Unity Ads authorized resellers
 adagio.io, 1522, RESELLER
