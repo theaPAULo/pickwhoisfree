@@ -1,4 +1,5 @@
 # PickWho App-Ads.txt
+ownerdomain=pickwhoisfree.com
 # Direct sellers
 google.com, pub-6639027591546236, DIRECT, f08c47fec0942fa0
 facebook.com, 1229704415777002, DIRECT, c3e20eee3f780d68
