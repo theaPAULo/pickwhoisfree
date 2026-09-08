@@ -221,6 +221,9 @@ videoheroes.tv, 212499, RESELLER, 064bc410192443d8
 vidoomy.com, 8953515, RESELLER
 xandr.com, 7353, RESELLER
 zetaglobal.net, 525, RESELLER
+media.net, 8CU5L226O, RESELLER
+media.net, 8CU9B72O6, RESELLER
+sharethrough.com, SniqCOMC, RESELLER, d53b998a7bd4ecd2
 
 # Liftoff / Vungle authorized resellers (added 2026-07-01, from Vungle app-ads.txt full list updated 2026-06-28)
 33across.com, 001Pg0000197KcKIAU, RESELLER, bbea06d9c4d2853c
